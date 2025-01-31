@@ -9,9 +9,9 @@ const port = 3000
 
 let usuarios = [
   {
-    usuario: 'McPeMauri',
+    usuario: 'mcpemauri',
     correo: 'mcpemauri@gmail.com',
-    contrasena: '1224',
+    contrasena: 'Mau1224!#',
     cumpleanios: '24/09/2003',
     nombre: 'Mauricio Martínez',
   },
@@ -53,13 +53,15 @@ app.post('/register', (req, res) => {
   if (!usuario || !correo || !contrasena || !cumpleanios || !nombre) {
     res.json({
       statusCode: 400,
-      intMessage: 'Missing fields'
+      intMessage: 'Missing fields',
     })
     return
-  } else if (usuarios.find((u) => u.usuario === usuario || u.correo === correo)) {
+  } else if (
+    usuarios.find((u) => u.usuario === usuario || u.correo === correo)
+  ) {
     res.json({
       statusCode: 400,
-      intMessage: 'Credentials already in use'
+      intMessage: 'Credentials already in use',
     })
     return
   } else {
@@ -72,6 +74,7 @@ app.post('/register', (req, res) => {
         correo,
         cumpleanios,
         nombre,
+        usuarios,
       },
     })
   }
